@@ -3,9 +3,13 @@ package com.example.assignment2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.datepicker.CalendarConstraints;
+import com.google.android.material.datepicker.DateValidatorPointBackward;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 
@@ -14,6 +18,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class BookAppointmentActivity extends AppCompatActivity {
+    private final String TAG = "BookAppointmentActivity";
     private TextView selectedDateTextView;
 
     @Override
@@ -28,14 +33,31 @@ public class BookAppointmentActivity extends AppCompatActivity {
     }
 
     private void showDatePicker() {
+        long today = MaterialDatePicker.todayInUtcMilliseconds();
+        long fourteenDays = today + (14 * 24 * 60 * 60 * 1000);
+
+
+        CalendarConstraints.Builder constraintsBuilder = new CalendarConstraints.Builder();
+        constraintsBuilder.setValidator(DateValidatorPointBackward.before(fourteenDays));
+
+
+
         MaterialDatePicker<Long> datePicker = MaterialDatePicker.Builder.datePicker()
                 .setTitleText("Select Date")
+                .setSelection(today) // Default selection is today
+                .setCalendarConstraints(constraintsBuilder.build())
                 .build();
 
         datePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener<Long>() {
             @Override
             public void onPositiveButtonClick(Long selectedDate) {
-                displaySelectedDate(selectedDate);
+                if (selectedDate < today) {
+                    Toast.makeText(BookAppointmentActivity.this, "Date is in the past", Toast.LENGTH_SHORT).show();
+                    Log.e(TAG, "Date is in the past.");
+                }
+                else {
+                    displaySelectedDate(selectedDate);
+                }
             }
         });
 
@@ -48,4 +70,6 @@ public class BookAppointmentActivity extends AppCompatActivity {
 
         selectedDateTextView.setText("Selected Date: " + formattedDate);
     }
+
+
 }
