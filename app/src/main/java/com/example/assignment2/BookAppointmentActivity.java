@@ -6,19 +6,27 @@ package com.example.assignment2;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.tabs.TabLayout;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-public class BookAppointmentActivity extends AppCompatActivity {
+public class BookAppointmentActivity extends AppCompatActivity implements MyRecyclerViewAdapter.ItemClickListener {
     private final String TAG = "BookAppointmentActivity";
     private TabLayout tabLayout;
+    private MyRecyclerViewAdapter demo_adapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +34,18 @@ public class BookAppointmentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_book_appointment);
 
         tabLayout = findViewById(R.id.tabLayout);
+
+        RecyclerView rv = findViewById(R.id.recyclerView1);
+
+        ArrayList<String> myData = new ArrayList<>();
+        myData.add("Alpha");
+        myData.add("Bravo");
+        myData.add("Charlie");
+
+        rv.setLayoutManager(new LinearLayoutManager(this));
+        demo_adapter = new MyRecyclerViewAdapter(this, myData);
+        demo_adapter.setClickListener(this);
+        rv.setAdapter(demo_adapter);
 
         addTabs();
 
@@ -79,6 +99,9 @@ public class BookAppointmentActivity extends AppCompatActivity {
         return selectedDate;
     }
 
-
+    @Override
+    public void onItemClick(View view, int position) {
+        Toast.makeText(BookAppointmentActivity.this, "You clicked on " + demo_adapter.getItem(position), Toast.LENGTH_SHORT).show();
+    }
 
 }
