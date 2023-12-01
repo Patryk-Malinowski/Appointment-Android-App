@@ -56,12 +56,12 @@ public class BookAppointmentActivity extends AppCompatActivity {
 
     // Method to add 14 tabs into tab layout (dates start from today)
     private void addTabs() {
-        long today = MaterialDatePicker.todayInUtcMilliseconds();
-        long oneDay = (24 * 60 * 60 * 1000);
-        for (int i = 0; i < 14; i++) {
+        long today = MaterialDatePicker.todayInUtcMilliseconds(); // today in milliseconds
+        long oneDay = (24 * 60 * 60 * 1000); // one day in milliseconds
+        for (int i = 0; i < 14; i++) { // make 14 tabs
 
             tabLayout.addTab(tabLayout.newTab().setText(convertDate(today)));
-            today += oneDay;
+            today += oneDay; // gets set to next day
         }
     }
 
