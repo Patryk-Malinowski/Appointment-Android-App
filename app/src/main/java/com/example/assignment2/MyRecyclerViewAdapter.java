@@ -50,7 +50,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String name = mData.get(position);
-        holder.myTextView.setText(name);
+        holder.availabilityTextView.setText(name);
+        holder.appointmentTimeTextView.setText(name);
 
     }
 
@@ -66,12 +67,13 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView myTextView;
+        TextView availabilityTextView, appointmentTimeTextView;
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            myTextView = itemView.findViewById(R.id.row_textView);
+            availabilityTextView = itemView.findViewById(R.id.availabilityTextView);
+            appointmentTimeTextView = itemView.findViewById(R.id.timeTextView);
             itemView.setOnClickListener(this);
         }
 
