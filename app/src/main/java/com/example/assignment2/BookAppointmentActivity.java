@@ -4,9 +4,11 @@
 
 package com.example.assignment2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +27,7 @@ public class BookAppointmentActivity extends AppCompatActivity implements MyRecy
     private final String TAG = "BookAppointmentActivity";
     private TabLayout tabLayout;
     private MyRecyclerViewAdapter demo_adapter;
+    private String selectedDate = "";
 
 
 
@@ -44,6 +47,10 @@ public class BookAppointmentActivity extends AppCompatActivity implements MyRecy
 
         rv.setLayoutManager(new LinearLayoutManager(this));
         demo_adapter = new MyRecyclerViewAdapter(this, myData);
+
+        selectedDate = convertDate(MaterialDatePicker.todayInUtcMilliseconds());
+        demo_adapter.setSelectedDate(selectedDate);
+
         demo_adapter.setClickListener(this);
         rv.setAdapter(demo_adapter);
 
@@ -53,6 +60,8 @@ public class BookAppointmentActivity extends AppCompatActivity implements MyRecy
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                selectedDate = convertDate(calculateSelectedDate(tab.getPosition()));
+                demo_adapter.setSelectedDate(selectedDate);
                 showDataForSelectedDate(tab.getPosition());
             }
 
@@ -64,6 +73,8 @@ public class BookAppointmentActivity extends AppCompatActivity implements MyRecy
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
+
+
     }
 
     // Method to display data for the selected date in tab layout

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,11 +17,17 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     private List<String> mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
+    private String selectedDate;
 
     // constructor
     public MyRecyclerViewAdapter(Context context, List<String> mData) {
         this.mData = mData;
         this.mInflater = LayoutInflater.from(context);
+    }
+
+    public void setSelectedDate(String date) {
+        this.selectedDate = date;
+        notifyDataSetChanged();
     }
 
     public interface ItemClickListener{
@@ -50,7 +57,6 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String name = mData.get(position);
-        holder.availabilityTextView.setText(name);
         holder.appointmentTimeTextView.setText(name);
 
     }
@@ -67,14 +73,16 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView availabilityTextView, appointmentTimeTextView;
+        TextView appointmentTimeTextView;
+        Button bookButton;
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            availabilityTextView = itemView.findViewById(R.id.availabilityTextView);
-            appointmentTimeTextView = itemView.findViewById(R.id.timeTextView);
-            itemView.setOnClickListener(this);
+            appointmentTimeTextView = itemView.findViewById(R.id.availabilityTextView);
+            bookButton = itemView.findViewById(R.id.bookButton);
+
+            bookButton.setOnClickListener(this);
         }
 
         @Override
@@ -82,7 +90,11 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             if (mClickListener != null)
                 mClickListener.onItemClick(view, getAdapterPosition());
 
+            String time = appointmentTimeTextView.getText().toString();
+            Item item = new Item(time, selectedDate);
 
+            DB_Helper dbHelper = new DB_Helper(itemView.getContext());
+            dbHelper.insertUserDetails(item);
 
         }
     }

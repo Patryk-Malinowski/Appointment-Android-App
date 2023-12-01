@@ -2,14 +2,10 @@ package com.example.assignment2;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
-import android.widget.CalendarView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
     @Override
