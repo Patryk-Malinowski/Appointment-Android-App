@@ -15,4 +15,9 @@ public class Item {
         return date;
     }
 
+    @Override
+    public String toString() {
+        return "Date: " + date + ", Time: " + time;
+    }
+
 }
