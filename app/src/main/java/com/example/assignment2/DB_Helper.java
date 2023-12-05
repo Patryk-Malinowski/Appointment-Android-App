@@ -137,6 +137,32 @@ public class DB_Helper extends SQLiteOpenHelper {
 
     }
 
+    // method that checks if an appointment is available (not in db already)
+    public boolean checkAppointmentAvailability(String desiredDate, String desiredTime){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // define columns
+        String[] columns = {KEY_TIME, KEY_DATE};
+
+        // define criteria (WHERE clause)
+        String selection = KEY_DATE + " = ? AND " + KEY_TIME + " = ?";
+
+        // specify date and time to search by
+        String[] selectionArgs = {desiredDate, desiredTime};
+
+        // query the db
+        Cursor cursor = db.query(TABLE_Appointments, columns, selection, selectionArgs, null, null, null);
+
+        // see if any row is returned
+        boolean isAvailable = cursor.getCount() == 0;
+
+        cursor.close();
+
+        db.close();
+
+        return isAvailable;
+    }
+
 
 
 

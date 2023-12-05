@@ -91,7 +91,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             if (mClickListener != null)
                 mClickListener.onItemClick(view, getAdapterPosition());
 
-            String time = appointmentAvailabilityTextView.getText().toString();
+            String time = appointmentTimeTextView.getText().toString();
             Item item = new Item(time, selectedDate);
 
             DB_Helper dbHelper = new DB_Helper(itemView.getContext());

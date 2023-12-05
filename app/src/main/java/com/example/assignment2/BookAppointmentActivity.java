@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
-public class BookAppointmentActivity extends AppCompatActivity implements MyRecyclerViewAdapter.ItemClickListener {
+public class BookAppointmentActivity extends AppCompatActivity {
     private final String TAG = "BookAppointmentActivity";
     private TabLayout tabLayout;
     private MyRecyclerViewAdapter demo_adapter;
@@ -50,16 +50,27 @@ public class BookAppointmentActivity extends AppCompatActivity implements MyRecy
         myData.add("15:00");
         myData.add("16:00");
 
+        // Create a new list to store available time slots
+        ArrayList<String> availableTimeSlots = new ArrayList<>();
+
         rv.setLayoutManager(new LinearLayoutManager(this));
-        demo_adapter = new MyRecyclerViewAdapter(this, myData);
+        demo_adapter = new MyRecyclerViewAdapter(this, availableTimeSlots);
 
         selectedDate = convertDate(MaterialDatePicker.todayInUtcMilliseconds());
         demo_adapter.setSelectedDate(selectedDate);
 
-        demo_adapter.setClickListener(this);
         rv.setAdapter(demo_adapter);
 
         addTabs();
+
+
+        // iterate over the predefined time slots
+        for (String time : myData) {
+            if (isTimeSlotAvailable(selectedDate, time)) {
+                availableTimeSlots.add(time);
+            }
+        }
+
 
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
@@ -67,6 +78,17 @@ public class BookAppointmentActivity extends AppCompatActivity implements MyRecy
             public void onTabSelected(TabLayout.Tab tab) {
                 selectedDate = convertDate(calculateSelectedDate(tab.getPosition()));
                 demo_adapter.setSelectedDate(selectedDate);
+
+                // clear the availableTimeSlots list before the for loop
+                availableTimeSlots.clear();
+
+                // iterate over the predefined time slots
+                for (String time : myData) {
+                    if (isTimeSlotAvailable(selectedDate, time)) {
+                        availableTimeSlots.add(time);
+                    }
+                }
+
                 showDataForSelectedDate(tab.getPosition());
             }
 
@@ -115,9 +137,10 @@ public class BookAppointmentActivity extends AppCompatActivity implements MyRecy
         return selectedDate;
     }
 
-    @Override
-    public void onItemClick(View view, int position) {
-        Toast.makeText(BookAppointmentActivity.this, "You clicked on " + demo_adapter.getItem(position), Toast.LENGTH_SHORT).show();
+    // Method to check time slot availability on a given date
+    private boolean isTimeSlotAvailable(String date, String time) {
+        // Use the checkAppointmentAvailability method from DB_Helper
+        // to check if the time slot is available for the selected date
+        return new DB_Helper(this).checkAppointmentAvailability(date, time);
     }
-
 }
