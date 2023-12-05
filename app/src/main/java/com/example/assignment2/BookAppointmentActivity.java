@@ -41,9 +41,14 @@ public class BookAppointmentActivity extends AppCompatActivity implements MyRecy
         RecyclerView rv = findViewById(R.id.recyclerView1);
 
         ArrayList<String> myData = new ArrayList<>();
-        myData.add("Alpha");
-        myData.add("Bravo");
-        myData.add("Charlie");
+        myData.add("9:00");
+        myData.add("10:00");
+        myData.add("11:00");
+        myData.add("12:00");
+        myData.add("13:00");
+        myData.add("14:00");
+        myData.add("15:00");
+        myData.add("16:00");
 
         rv.setLayoutManager(new LinearLayoutManager(this));
         demo_adapter = new MyRecyclerViewAdapter(this, myData);

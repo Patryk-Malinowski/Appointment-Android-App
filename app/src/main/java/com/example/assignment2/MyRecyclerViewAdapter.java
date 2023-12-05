@@ -56,8 +56,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
     // load or set the data into the views
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        String name = mData.get(position);
-        holder.appointmentTimeTextView.setText(name);
+        String time = mData.get(position);
+        holder.appointmentTimeTextView.setText(time);
 
     }
 
@@ -73,13 +73,14 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView appointmentTimeTextView;
+        TextView appointmentAvailabilityTextView, appointmentTimeTextView;
         Button bookButton;
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            appointmentTimeTextView = itemView.findViewById(R.id.availabilityTextView);
+            appointmentAvailabilityTextView = itemView.findViewById(R.id.availabilityTextView);
+            appointmentTimeTextView = itemView.findViewById(R.id.timeTextView);
             bookButton = itemView.findViewById(R.id.bookButton);
 
             bookButton.setOnClickListener(this);
@@ -90,7 +91,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             if (mClickListener != null)
                 mClickListener.onItemClick(view, getAdapterPosition());
 
-            String time = appointmentTimeTextView.getText().toString();
+            String time = appointmentAvailabilityTextView.getText().toString();
             Item item = new Item(time, selectedDate);
 
             DB_Helper dbHelper = new DB_Helper(itemView.getContext());
