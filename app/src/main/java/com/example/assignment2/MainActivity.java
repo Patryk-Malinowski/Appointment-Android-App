@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button bookAppointmentButton = findViewById(R.id.bookAppointmentButton);
         Button viewAppointmentsButton = findViewById(R.id.viewAppointmentsButton);
+        Button viewAppointmentsByDateButton = findViewById(R.id.viewAppointmentsByDateButton);
 
         bookAppointmentButton.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, BookAppointmentActivity.class));
@@ -22,6 +23,10 @@ public class MainActivity extends AppCompatActivity {
 
         viewAppointmentsButton.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, ViewAppointmentActivity.class));
+        });
+
+        viewAppointmentsByDateButton.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, ViewAppointmentsByDateActivity.class));
         });
     }
 }
