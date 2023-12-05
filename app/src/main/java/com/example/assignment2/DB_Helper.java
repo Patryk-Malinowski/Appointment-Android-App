@@ -99,6 +99,45 @@ public class DB_Helper extends SQLiteOpenHelper {
     }
 
 
+    // this method displays all booked appointments
+    public List<Item> getAllAppointments() {
+        List<Item> appointmentsList = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        // define columns
+        String[] columns = {KEY_TIME, KEY_DATE};
+
+        // query db for specific date (searchDate)
+        Cursor cursor = db.query(TABLE_Appointments, columns, null, null, null, null, null);
+
+        // check cursor is not null & at least one row in results
+        if (cursor != null && cursor.moveToFirst()) {
+            int timeIndex = cursor.getColumnIndex(KEY_TIME);
+            int dateIndex = cursor.getColumnIndex(KEY_DATE);
+
+            do {
+                // get time and date from current row
+                String time = cursor.getString(timeIndex);
+                String date = cursor.getString(dateIndex);
+
+                // create Item object
+                Item appointment = new Item(time, date);
+
+                // add appointment to list
+                appointmentsList.add(appointment);
+            } while (cursor.moveToNext());
+
+            cursor.close();
+        }
+
+        db.close();
+
+        // return all appointments that match searchDate
+        return appointmentsList;
+
+    }
+
+
 
 
 }
