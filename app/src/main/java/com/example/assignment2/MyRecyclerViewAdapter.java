@@ -1,6 +1,7 @@
 package com.example.assignment2;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAdapter.ViewHolder> {
@@ -88,8 +90,9 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
         @Override
         public void onClick(View view) {
-            if (mClickListener != null)
+            if (mClickListener != null) {
                 mClickListener.onItemClick(view, getAdapterPosition());
+            }
 
             String time = appointmentTimeTextView.getText().toString();
             Item item = new Item(time, selectedDate);
@@ -97,7 +100,40 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             DB_Helper dbHelper = new DB_Helper(itemView.getContext());
             dbHelper.insertUserDetails(item);
 
+            ArrayList<String> myData = new ArrayList<>();
+            myData.add("9:00");
+            myData.add("10:00");
+            myData.add("11:00");
+            myData.add("12:00");
+            myData.add("13:00");
+            myData.add("14:00");
+            myData.add("15:00");
+            myData.add("16:00");
+
+            // Create a new list to store available time slots
+            ArrayList<String> availableTimeSlots = new ArrayList<>();
+
+
+            // iterate over the predefined time slots
+            for (String timeData : myData) {
+                if (dbHelper.checkAppointmentAvailability(selectedDate, timeData)) {
+                    availableTimeSlots.add(timeData);
+                }
+            }
+
+
+            Log.d("MyRecyclerViewAdapter", "Updated Data: " + availableTimeSlots.toString());
+
+            // Update the RecyclerView with the new data
+            updateData(availableTimeSlots);
+
         }
+
+        public void updateData(List<String> newData) {
+            mData = newData;
+            notifyDataSetChanged();
+        }
+
     }
 
 

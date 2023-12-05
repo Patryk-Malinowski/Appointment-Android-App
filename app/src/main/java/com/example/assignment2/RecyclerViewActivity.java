@@ -29,8 +29,5 @@ public class RecyclerViewActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        // Create an adapter and set it to the RecyclerView
-        // ExampleAdapter adapter = new ExampleAdapter(data); // Replace with your adapter
-        // recyclerView.setAdapter(adapter);
     }
 }

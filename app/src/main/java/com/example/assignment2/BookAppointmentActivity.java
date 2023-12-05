@@ -138,7 +138,7 @@ public class BookAppointmentActivity extends AppCompatActivity {
     }
 
     // Method to check time slot availability on a given date
-    private boolean isTimeSlotAvailable(String date, String time) {
+    public boolean isTimeSlotAvailable(String date, String time) {
         // Use the checkAppointmentAvailability method from DB_Helper
         // to check if the time slot is available for the selected date
         return new DB_Helper(this).checkAppointmentAvailability(date, time);
