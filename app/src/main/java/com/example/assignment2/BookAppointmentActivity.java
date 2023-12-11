@@ -25,7 +25,6 @@ import java.util.Date;
 import java.util.Locale;
 
 public class BookAppointmentActivity extends AppCompatActivity {
-    private final String TAG = "BookAppointmentActivity";
     private TabLayout tabLayout;
     private MyRecyclerViewAdapter demo_adapter;
     private String selectedDate = "";
