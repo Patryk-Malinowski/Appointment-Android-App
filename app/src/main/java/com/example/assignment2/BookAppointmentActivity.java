@@ -90,7 +90,7 @@ public class BookAppointmentActivity extends AppCompatActivity {
                     }
                 }
 
-                showDataForSelectedDate(tab.getPosition());
+                demo_adapter.updateData(availableTimeSlots);
             }
 
             @Override
@@ -109,13 +109,6 @@ public class BookAppointmentActivity extends AppCompatActivity {
         NavigationMenu navigationMenu = new NavigationMenu(this, bottomNavigationView);
     }
 
-    // Method to display data for the selected date in tab layout
-    private void showDataForSelectedDate(int position) {
-        long selectedDate = calculateSelectedDate(position);
-
-        // Log the selected date
-        Log.d(TAG, convertDate(selectedDate));
-    }
 
     // Method to add 14 tabs into tab layout (dates start from today)
     private void addTabs() {
