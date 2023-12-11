@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.List;
 
 public class ViewAppointmentActivity extends AppCompatActivity {
@@ -26,5 +28,10 @@ public class ViewAppointmentActivity extends AppCompatActivity {
         // Display the appointments in a ListView
         ArrayAdapter<Item> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, appointments);
         appointmentsListView.setAdapter(adapter);
+
+
+        // initialize BottomNavigationView
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        NavigationMenu navigationMenu = new NavigationMenu(this, bottomNavigationView);
     }
 }

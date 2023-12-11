@@ -6,6 +6,8 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -28,6 +30,12 @@ public class MainActivity extends AppCompatActivity {
         viewAppointmentsByDateButton.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, ViewAppointmentsByDateActivity.class));
         });
+
+
+
+        // initialize BottomNavigationView
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        NavigationMenu navigationMenu = new NavigationMenu(this, bottomNavigationView);
     }
 }
 

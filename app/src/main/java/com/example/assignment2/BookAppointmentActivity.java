@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.tabs.TabLayout;
 
@@ -102,6 +103,10 @@ public class BookAppointmentActivity extends AppCompatActivity {
         });
 
 
+
+        // initialize BottomNavigationView
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        NavigationMenu navigationMenu = new NavigationMenu(this, bottomNavigationView);
     }
 
     // Method to display data for the selected date in tab layout

@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.List;
 
 public class ViewAppointmentsByDateActivity extends AppCompatActivity {
@@ -35,5 +37,10 @@ public class ViewAppointmentsByDateActivity extends AppCompatActivity {
             appointmentsListView.setAdapter(adapter);
 
         });
+
+
+        // initialize BottomNavigationView
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        NavigationMenu navigationMenu = new NavigationMenu(this, bottomNavigationView);
     }
 }
