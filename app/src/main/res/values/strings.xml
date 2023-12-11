@@ -3,4 +3,9 @@
     <string name="home">Home</string>
     <string name="book">Book</string>
     <string name="view">View</string>
+    <string name="_9_00">9:00</string>
+    <string name="time">Time:</string>
+    <string name="view_appointments_by_date">View Appointments By Date</string>
+    <string name="view_all_appointments">View All Appointments</string>
+    <string name="book_appointment">Book Appointment</string>
 </resources>

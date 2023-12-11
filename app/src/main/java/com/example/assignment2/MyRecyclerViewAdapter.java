@@ -75,13 +75,12 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView appointmentAvailabilityTextView, appointmentTimeTextView;
+        TextView appointmentTimeTextView;
         Button bookButton;
 
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            appointmentAvailabilityTextView = itemView.findViewById(R.id.availabilityTextView);
             appointmentTimeTextView = itemView.findViewById(R.id.timeTextView);
             bookButton = itemView.findViewById(R.id.bookButton);
 
