@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background_dark"
-    tools:context=".MainActivity">
+    tools:context=".AppointmentsActivity">
 
 
     <!-- Add BottomNavigationView -->
@@ -24,13 +24,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="45dp"
-        android:text="@string/welcome"
+        android:text="@string/appointments"
         android:textColor="@color/white"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/textViewHeading2"
@@ -42,31 +43,33 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewHeading" />
-
-    <Button
-        android:id="@+id/bookAppointmentButton"
-        android:layout_width="230dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="85dp"
-        android:backgroundTint="@color/black"
-        android:text="@string/book_appointment"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewHeading2" />
 
     <Button
         android:id="@+id/viewAppointmentsButton"
         android:layout_width="230dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="85dp"
+        android:backgroundTint="@color/black"
+        android:text="@string/view_all_appointments"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHeading2" />
+
+    <Button
+        android:id="@+id/viewAppointmentsByDateButton"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
         android:backgroundTint="@color/black"
-        android:text="@string/view_appointments"
+        android:text="@string/view_appointments_by_date"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bookAppointmentButton" />
-
+        app:layout_constraintTop_toBottomOf="@+id/viewAppointmentsButton" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,7 +14,7 @@ public class NavigationMenu implements BottomNavigationView.OnNavigationItemSele
 
     public NavigationMenu(AppCompatActivity activity, BottomNavigationView bottomNavigationView) {
         this.activity = activity;
-        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -28,7 +28,7 @@ public class NavigationMenu implements BottomNavigationView.OnNavigationItemSele
             activity.startActivity(new Intent(activity, BookAppointmentActivity.class));
             return true;
         } else if (itemId == R.id.navigation_notifications) {
-            activity.startActivity(new Intent(activity, ViewAppointmentsByDateActivity.class));
+            activity.startActivity(new Intent(activity, AppointmentsActivity.class));
             return true;
         } else {
             return false;

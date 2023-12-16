@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="DD/MM/YYYY"
+        android:hint="@string/dd_mm_yyyy"
         android:inputType="date"
         app:layout_constraintStart_toStartOf="@+id/appointmentsListView"
         app:layout_constraintTop_toTopOf="parent" />
@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="54dp"
         android:layout_marginEnd="54dp"
-        android:text="Search"
+        android:text="@string/search"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/editTextDate"
         app:layout_constraintTop_toTopOf="parent" />
