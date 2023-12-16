@@ -109,9 +109,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
             myData.add("15:00");
             myData.add("16:00");
 
-            // Create a new list to store available time slots
             ArrayList<String> availableTimeSlots = new ArrayList<>();
-
 
             // iterate over the predefined time slots
             for (String timeData : myData) {
@@ -123,7 +121,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 
             Log.d("MyRecyclerViewAdapter", "Updated Data: " + availableTimeSlots.toString());
 
-            // Update the RecyclerView with the new data
+            // update the RecyclerView with new data
             updateData(availableTimeSlots);
 
         }

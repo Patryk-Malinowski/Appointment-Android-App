@@ -19,13 +19,12 @@ public class ViewAppointmentActivity extends AppCompatActivity {
 
         ListView appointmentsListView = findViewById(R.id.appointmentsListView);
 
-        String searchDate = "03/12/2023";
 
-        // Retrieve appointments from the database for the specified date
+        // retrieve appointments from the database for the specified date
         DB_Helper dbHelper = new DB_Helper(this);
         List<Item> appointments = dbHelper.getAllAppointments();
 
-        // Display the appointments in a ListView
+        // display the appointments in a ListView
         ArrayAdapter<Item> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, appointments);
         appointmentsListView.setAdapter(adapter);
 

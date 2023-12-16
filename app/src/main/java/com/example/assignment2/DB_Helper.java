@@ -20,7 +20,6 @@ public class DB_Helper extends SQLiteOpenHelper {
     private static final String KEY_ID = "id";
     private static final String KEY_TIME = "time";
     private static final String KEY_DATE = "date";
-    private final String TAG = "DB_Helper";
 
 
 

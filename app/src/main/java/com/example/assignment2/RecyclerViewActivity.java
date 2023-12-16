@@ -19,13 +19,12 @@ public class RecyclerViewActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView1);
         dateTextView = findViewById(R.id.dateTextView);
 
-        // Retrieve the selected date from the intent
+        // retrieve the selected date from the intent
         long selectedDate = getIntent().getLongExtra("selectedDate", 0);
 
-        // Use the selectedDate as needed, for example, display it in a TextView
+        // set date text to selected date
         dateTextView.setText("Selected Date: " + selectedDate);
 
-        // Set up your RecyclerView as needed
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
