@@ -1,4 +1,4 @@
-package com.example.assignment2;
+package com.example.Patryk_Malinowski;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.example.assignment2;
+package com.example.Patryk_Malinowski;
 
 public class Item {
     String time, date;

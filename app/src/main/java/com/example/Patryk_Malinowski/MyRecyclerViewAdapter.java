@@ -1,4 +1,4 @@
-package com.example.assignment2;
+package com.example.Patryk_Malinowski;
 
 import android.content.Context;
 import android.util.Log;
