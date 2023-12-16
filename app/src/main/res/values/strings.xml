@@ -9,4 +9,5 @@
     <string name="view_all_appointments">View All Appointments</string>
     <string name="book_appointment">Book Appointment</string>
     <string name="duration_1_hour">Duration: 1 Hour</string>
+    <string name="selected_date">Selected Date:</string>
 </resources>
